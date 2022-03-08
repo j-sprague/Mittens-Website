@@ -31,7 +31,11 @@
 <body>
   <div class="imgbox">
     <script> // https://stackoverflow.com/questions/14004318/show-random-image-from-array-in-javascript
-         document.write("<img src='pics/" + Math.floor(Math.random() * 173 + 1) + ".jpg' class='center-fit''>");
+      var num_pics = 173;
+      var picked = Math.floor(Math.random() * num_pics + 1);
+      document.write("<span title='Mittens Picture Number: " + picked + " out of " +num_pics + "'>")
+      document.write("<img src='pics/" + picked + ".jpg' class='center-fit'' alt='Mittens Picture Number: " + picked + "'>");
+      document.write("</span>")
     </script>
   </div>
 </body>
