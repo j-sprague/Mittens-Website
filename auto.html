@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <title>Mittens</title>
+        <meta name="Mittens Page" content ="Mittens" />
+        <meta charset="utf-8" />
+        <link rel="icon" href="pics/icon.png">
+        <meta http-equiv="refresh" content="8">
+        <style type = "text/css">
+          * {
+            /*https://stackoverflow.com/questions/6169666/how-to-resize-an-image-to-fit-in-the-browser-window */
+            margin: 0; 
+            padding: 0;
+        }
+        .imgbox {
+            display: grid;
+            height: 100%;
+        }
+        .center-fit {
+            max-width: 100%;
+            width:100%;
+            object-fit:contain;
+            max-height: 100vh;
+            margin: 0 auto;
+        }
+        body {
+          background-color: #1c1c1c;
+        }
+        </style>
+    </head>
+
+<body>
+  <div class="imgbox">
+    <script> // https://stackoverflow.com/questions/14004318/show-random-image-from-array-in-javascript
+      var num_pics = 173;
+      var picked = Math.floor(Math.random() * num_pics + 1);
+      document.write("<img src='pics/" + picked + ".jpg' class='center-fit'' title='Mittens Picture Number: " + picked + " out of " +num_pics + "'>");
+    </script>
+  </div>
+</body>
+
+</html>
