@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html lang = "en">
-    <head>
-        <title>Mittens</title>
-        <meta name="Mittens Page" content ="Mittens" />
-        <meta charset="utf-8" />
-        <link rel="icon" href="pics/icon.png">
-        <meta http-equiv="refresh" content="8">
-        <style type = "text/css">
-          * {
-            /*https://stackoverflow.com/questions/6169666/how-to-resize-an-image-to-fit-in-the-browser-window */
-            margin: 0; 
-            padding: 0;
-        }
-        .imgbox {
-            display: grid;
-            height: 100%;
-        }
-        .center-fit {
-            max-width: 100%;
-            width:100%;
-            object-fit:contain;
-            max-height: 100vh;
-            margin: 0 auto;
-        }
-        body {
-          background-color: #1c1c1c;
-        }
-        </style>
-    </head>
-
+<head>
+  <title>Mittens</title>
+  <meta name="Mittens Page" content ="Mittens" />
+  <meta charset="utf-8" />
+  <link rel="icon" href="pics/icon.png">
+  <style type = "text/css">
+    * {
+      /*https://stackoverflow.com/questions/6169666/how-to-resize-an-image-to-fit-in-the-browser-window */
+      margin: 0; 
+      padding: 0;
+  }
+  .imgbox {
+      display: grid;
+      height: 100%;
+  }
+  .center-fit {
+      max-width: 100%;
+      width:100%;
+      object-fit:contain;
+      max-height: 100vh;
+      margin: 0 auto;
+  }
+  body {
+    background-color: #1c1c1c;
+  }
+  input {
+    width: 0%;
+    border-width: 0px;
+  }
+  </style>
+  <script>
+    let num; // Declare num which will be initialized in do while loop
+    let params = new URLSearchParams(location.search); // Get parameters from url
+    // Find if the freq parameter isn't in our current URL
+    // If not in our current URL, we must ask user for value
+    if (params.get('freq') == null) {
+      do { 
+          num = prompt("How many seconds do you want before each refresh?"); // Prompt user for input
+          // Make sure input value is a positive number 
+          if (num > 0) { 
+            // Create an "invisible" form that will submit the data as a GET request
+            document.write('<form name="data" id="data" method="GET"><input type="text" name="freq" value="' + num + '"/></form>');
+            // Submit invisible form
+            document.forms["data"].submit();
+          } else {
+              alert("Please enter a positive number");
+          } 
+      } while (num <= 0); 
+    }
+    // If we already have a value for freq or once we get value for freq, start a refresh after 'freq' seconds
+    document.write('<meta http-equiv="refresh" content="' + params.get('freq') + '">');
+  </script>
+</head>
 <body>
-  <div class="imgbox">
-    <script> // https://stackoverflow.com/questions/14004318/show-random-image-from-array-in-javascript
-      var num_pics = 173;
-      var picked = Math.floor(Math.random() * num_pics + 1);
-      document.write("<img src='pics/" + picked + ".jpg' class='center-fit'' title='Mittens Picture Number: " + picked + " out of " +num_pics + "'>");
-    </script>
-  </div>
+<div class="imgbox">
+  <script> // https://stackoverflow.com/questions/14004318/show-random-image-from-array-in-javascript
+    var num_pics = 174;
+    var picked = Math.floor(Math.random() * num_pics + 1);
+    document.write("<img src='pics/" + picked + ".jpg' class='center-fit'' title='Mittens Picture Number: " + picked + " out of " +num_pics + "'>");
+  </script>
+</div>
 </body>
 
 </html>
