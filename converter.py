@@ -5,7 +5,7 @@ from PIL import Image, ImageOps
 import os
 
 old_path = "new/"
-new_path = "dom/"
+new_path = "sadie/"
 old_dir = os.listdir(old_path)
 num_pics = len(os.listdir(new_path)) - 1
 
