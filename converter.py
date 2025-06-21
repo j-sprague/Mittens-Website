@@ -5,7 +5,7 @@ from PIL import Image, ImageOps
 import os
 
 old_path = "new/"
-new_path = "sadie/"
+new_path = "cheese/"
 old_dir = os.listdir(old_path)
 num_pics = len(os.listdir(new_path)) - 1
 
@@ -13,6 +13,9 @@ for i in old_dir:
     im1 = Image.open(f'{old_path}{i}')
     im1 = im1.convert('RGB')
     im1 = ImageOps.exif_transpose(im1)
+    width, height = im1.size
+    new_size = (width//3, height//3)
+    im1 = im1.resize(new_size)
     num_pics = num_pics + 1
     im1.save(f'{new_path}{num_pics}.jpg')
     os.remove(f'{old_path}{i}')
